@@ -1,0 +1,89 @@
+extends layout
+block content
+   div#content
+     div#content-header
+       h1 Appointments
+     div(class="container-fluid")
+       div(class='row-fluid')
+        div(class='span12')
+         div(class="container-fluid",id="appointments")
+           div.row
+             div.btn-group
+                button.btn.btn-info#selectVenueBt Select Venue
+                button.btn.btn-info.dropdown-toggle(data-toggle='dropdown')
+                  span.caret
+                ul.dropdown-menu
+                  each val,key in info.venues  
+                    li
+                      a(href='javascript:void(0)',class="selectVenueById",venue_id="#{val.foursquare_id}") #{val.name}
+           div.row(id="manageEmp") 
+             div(class="container span4" ,style="")
+              div(class='widget-box')
+                 div(class='widget-title')
+                     span(class='icon')
+                        i(class='icon-align-justify')
+                     h5 Client Name
+                   div(class='widget-content nopadding')
+                    ul.recent-posts(id="empList")                        
+                       each val,key in apts
+                         li
+                           a.showApt(class="#{val.venue_id}",href="javascript:void(0)",id="#{val.apt_id}") #{val.name} 
+                             
+             div(class="container span8" ,style="padding-left: 5px;")
+              div(class="widget-box")
+                div(class="widget-title")
+                  span(class="icon")
+                    i(class='icon-align-justify')
+                  h5 Details
+                div(class='widget-content nopadding')
+                  div.form-horizontal
+                    input(type='hidden',id="eventId",style="display:none")                        
+                    div.control-group(style="width: 95%")
+                      label.control-label Name
+                      div.controls
+                        input(type='text',id="eventName",disabled)
+                    input(type='hidden',id="empId",style="display:none")                        
+                    div.control-group(style="width: 95%")
+                      label.control-label Client Name
+                      div.controls
+                        input(type='text',id="eventUser",disabled)
+                    input(type='hidden',id="eventId",style="display:none")                        
+                    div.control-group(style="width: 95%")
+                      label.control-label Venue
+                      div.controls
+                        select(id="eventVenue",disabled)
+                         each val,key in info.venues
+                           option(value="#{val.foursquare_id}")  #{val.name}
+                    input(type='hidden',id="empId",style="display:none")                        
+                    div.control-group(style="width: 95%")
+                      label.control-label Date
+                      div.controls
+                        input(type='text',id="eventDate",disabled)
+                    div.control-group(style="width: 95%")
+                      label.control-label Start time
+                      div.controls
+                        input(type='text',id="eventStart",disabled)
+                    div.control-group(style="width: 95%")
+                      label.control-label Status
+                      div.controls
+                        input(type='text',id="eventStatus",disabled)
+                    div.control-group(style="width: 95%")
+                     div.controls          
+                      button.btn.btn-success(id="aptUpdate") Confirm
+                      a.btn.btn-danger(href="javascript:void(0)",id="aptCancel",style="float:right",action="cancel") Cancel 
+
+block scripts
+  script(type='text/javascript', src='/javascripts/lib/excanvas.min.js')
+  script(type='text/javascript', src='/javascripts/lib/jquery.min.js')
+  script(type='text/javascript', src='/javascripts/lib/jquery.ui.custom.js')
+  script(type='text/javascript', src='/javascripts/lib/bootstrap.min.js')
+  script(type='text/javascript', src='/javascripts/lib/jquery.peity.min.js')
+  script(type='text/javascript', src='/javascripts/lib/unicorn.js')
+  //script(type='text/javascript', src='/javascripts/lib/unicorn.dashboard.js')
+  script(type='text/javascript', src='/javascripts/lib/jquery.uniform.js')
+  script(type='text/javascript', src='/javascripts/lib/underscore.js')
+  script(type='text/javascript', src='/javascripts/lib/backbone.js')
+  script(type='text/javascript', src='/javascripts/lib/moment.js')
+  script(type='text/javascript', src='/javascripts/appointment.js')
+  script
+    var business_id = "#{info.id}";

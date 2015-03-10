@@ -1,0 +1,69 @@
+extends layout
+
+block content
+   div#content
+     div#content-header
+       h1 Venues
+       div(class="btn-group")
+         a(class="btn btn-large tip-bottom", data-original-title="Manage Users")
+          i(class='icon-user')
+         a(class="btn btn-large tip-bottom", data-original-title="Manage Orders")
+          i(class="icon-shopping-cart")
+     div#breadcrumb
+       a(class='tip-bottom', data-original-title='Go Home')
+         i(class='icon-home')Home Home
+       a(class='current', data-original-title='Go Home') Venues
+     div(class="container-fluid")
+       div(class='row-fluid')
+         div(class='span12',)
+          div.widget-box
+            div.widget-title
+              span.icon
+                i.icon-signal
+              h5 Site Statistics
+              div.buttons
+                a.btn.btn-mini(href='#')
+                  i.icon-refresh
+                  | Update stats
+            div.widget-content
+              div.row-fluid
+                div.span4
+                  ul.site-stats
+                    li
+                      i.icon-user
+                      strong 1433
+                      small Total Users
+                    li
+                      i.icon-arrow-right
+                      strong 16
+                      small New Users (last week)
+                    li.divider
+                    li
+                      i.icon-shopping-cart
+                      strong 259
+                      small Total Shop Items
+                    li
+                      i.icon-tag
+                      strong 8650
+                      small Total Orders
+                    li
+                      i.icon-repeat
+                      strong 29
+                      small Pending Orders
+                div.span8
+          
+
+block scripts
+  script(type='text/javascript', src='/javascripts/lib/excanvas.min.js')
+  script(type='text/javascript', src='/javascripts/lib/jquery.ui.custom.js')
+  script(type='text/javascript', src='/javascripts/lib/bootstrap.min.js')
+  //script(type='text/javascript', src='/javascripts/lib/jquery.flot.min.js')
+  //script(type='text/javascript', src='/javascripts/lib/jquery.flot.resize.min.js')
+  script(type='text/javascript', src='/javascripts/lib/jquery.peity.min.js')
+  script(type='text/javascript', src='/javascripts/lib/unicorn.js')
+  //script(type='text/javascript', src='/javascripts/lib/unicorn.dashboard.js')
+  script(type='text/javascript', src='/javascripts/lib/jquery.uniform.js')
+  script(type='text/javascript', src='/javascripts/lib/underscore.js')
+  script(type='text/javascript', src='/javascripts/lib/backbone.js')
+  script
+    var business_id = "#{info.id}";

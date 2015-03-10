@@ -1,0 +1,69 @@
+<html>
+<head>
+	<title>SocketChat</title>
+</head>
+<body>
+	<div id="login">
+		Connect :
+		<input type="text" id="username" placeholder="name">
+		<input type="text" id="uid" placeholder="Uid">
+		<input type="text" id="type" placeholder="type">
+		<input type="submit" id="connect" value="connect">
+	</div>
+	<div id="msgBox" style="display:none">
+		Send msg to: 
+		<input type="text" id="to_uid" placeholder="to_uid">
+		<input type="text" id="msg" placeholder="msg">
+		<input type="submit" id="send" value="send">
+		<input type="submit" id="disconnect" value="disconnect">
+		<div id="usrMsgs">
+
+		</div>
+	</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+
+
+<script>
+  var socket = io.connect('http://localhost');
+  var thisUser = null;
+  socket.on('ack', function (data) {
+    console.log(data);
+  });
+  $("#connect").on("click",function(){
+  		$("#login").hide();
+  		$("#msgBox").show();
+  	    var type = $("#type").val();
+  		var uid = $("#uid").val();
+  		var uname = $("#username").val();
+  		
+  		var user = {
+			  			type : type,
+			  			uid : uid,
+			  			uname :uname
+			  		}
+
+		thisUser = user;
+		socket.emit('connect',user);
+		socket.on('connect',function(data){
+			console.log(data);
+		});
+
+		socket.on('msg',function(data){
+			$("#usrMsgs").append(data.from.uname +":"+data.msg);
+			console.log(data);
+		});
+  });
+
+  $("#send").on("click",function(){
+  	    console.log(thisUser);
+  		socket.emit("sendchat",{to_uid:$("#to_uid").val(),msg:$("#msg").val(),from_uid:thisUser});
+  		socket.on("msg",function(data){
+  			console.log(data);
+  		});
+  });
+</script>
+</body>
+</html>

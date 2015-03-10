@@ -1,0 +1,20 @@
+<li class="chat-title drop3columns">
+	<a href="#" class="chat_uname"><%= name %></a>
+	<a href="#" class="chatbox_action">
+	<i class="maxmin icon-chevron-up"></i>
+	<i id="close" class="icon-remove"></i></a>
+	<div class="footer_dropup drop3columns" style="display: none;">
+		<div class="chatbox">
+			<div class="chatbox_body">
+				<div class="chatMsgs">
+					<ul class="chatMsgsList">
+						<% _.each(msgs,function(msg){ %> <li><%= name %>:<%= msg.msg %></li> <% }); %> 
+					</ul>
+				</div>
+			</div>
+			<div class="chatbox_footer">
+				<input type="text" class="chattxt" uid="<%= uid %>">
+			</div>
+		</div>
+	</div>
+</li>

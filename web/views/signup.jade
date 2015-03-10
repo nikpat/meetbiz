@@ -1,0 +1,44 @@
+extends loginlayout
+
+block content
+ div#logo
+    img(src='/img/logo.png')
+ div#signupbox
+  form#signupForm(method="post",action="/signup", class="form-vertical")
+    p Sign Up!
+    div(class='controls')
+      div(class='input-prepend')
+        span(class='add-on')
+         i(class='icon-user')
+        input(type='text',name="name",placeholder='Your Name',value="")
+         -if (errors.name)
+           p 
+              | <span style="font-size:20px;color:red">#{ errors['name']['msg'] }</span>
+      div(class='input-prepend')
+        span(class='add-on')
+         i(class='icon-user')
+        input(type='text',name="username",placeholder='Username')
+        -if (errors)
+           p 
+              | <span style="font-size:15px !important ;color:red">#{ errors['username']['msg'] }</span>
+      div(class='input-prepend')
+        span(class='add-on')
+         i(class='icon-envelope')
+        input(type='text',name="email",placeholder='Email address',value="")
+        -if (errors)
+           p 
+              | <span style="font-size:15px;color:red">#{ errors['email']['msg'] }</span>
+      div(class='input-prepend')
+        span(class='add-on')
+         i(class='icon-lock')
+        input(type='password',name="password",placeholder='Password')
+      div(class='input-prepend')
+        span(class='add-on')
+         i(class='icon-lock')
+        input(type='password',name="cpassword",placeholder='Confirm Password')
+       
+    div(class="form-actions")
+     span(class='pull-left')
+       a#to-login-signup(href="/",class='flip-link') &lt; Back to login
+     span(class='pull-right')
+       input(type='submit', class='btn btn-inverse', value='Signup')

@@ -1,0 +1,38 @@
+extends loginlayout
+
+block content
+  div#logo
+    img(src='/img/logo.png')
+  div#loginbox(style="height:210px")
+    form#loginform(method="post",action="/recovery/#{token}",class='form-vertical')
+      -if(flashmsg)
+        span
+          | #{flashmsg}
+      p(style="margin-top:0px !important") Enter Email and New Password
+      div(class='control-group')
+        div(class='controls')
+          div(class='input-prepend')
+            span(class='add-on')
+              i(class='icon-envelope')
+            input(type='email',required="required",name="email",placeholder='Email')
+       div(class='control-group')
+        div(class='controls')
+          div(class='input-prepend')
+            span(class='add-on')
+              i(class='icon-lock')
+            input(type='password',required="required",name="password",placeholder='Password')
+       div(class='control-group')
+        div(class='controls')
+          div(class='input-prepend')
+            span(class='add-on')
+              i(class='icon-lock')
+            input(type='password',required="required",name="cpassword",placeholder='Password')
+       div(class="form-actions")
+         div
+           span(class='pull-right')
+             input(type='submit', class='btn btn-inverse', value='Reset',style="margin-right: 10px;")
+      
+
+
+block scripts
+  script(type='text/javascript',src='/javascripts/lib/jquery.min.js')

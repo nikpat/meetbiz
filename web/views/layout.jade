@@ -1,0 +1,88 @@
+!!! 5
+html(lang='en')
+  meta(charset='UTF-8')
+  meta(name='viewport',content='width=device-width, initial-scale=1.0')
+  head
+     title  Dashboard
+     link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+     link(rel='stylesheet', href='/stylesheets/bootstrap-responsive.min.css')
+     link(rel='stylesheet', href='/stylesheets/unicorn.grey.css')
+     link(rel='stylesheet', href='/stylesheets/unicorn.main.css')
+     link(rel='stylesheet', href='/stylesheets/unicorn.login.css')
+     link(rel='stylesheet', href='/stylesheets/fullcalendar.css')
+     link(rel='stylesheet', href='/stylesheets/footer_full_width.css')
+     script(type='text/javascript', src='/javascripts/lib/jquery.min.js')
+     script(type='text/javascript', src='/javascripts/lib/underscore.js')
+     script(type='text/template', src='/javascripts/chatTemplates/msgListing.ejs',id="msgListing")
+     script(type='text/javascript', src='/javascripts/chatscript.js')
+     script(type='text/javascript', src='/socket.io/socket.io.js')
+     block scripts
+  div#header
+    h1(style="margin:0px") 
+      a(href='#',style="margin:0px") Admin
+  div#user-nav(class="navbar navbar-inverse")
+    ul(class="nav btn-group", style="width:auto;margin:0px")
+      li#menu-messages.btn.btn-inverse.dropdown
+          a.dropdown-toggle(href='javascript:void(0)', data-toggle='dropdown', data-target='#menu-messages')
+            i.icon.con-map-marker
+            span.text#selectedVenue Venues  
+            b.caret
+            ul.dropdown-menu
+              each mng in mngData
+                li
+                  a.selVenue(href="javascript:void(0)",vid="#{mng.foursquare_id}") #{mng.name}
+
+      li(class="btn btn-inverse")
+        a(href="/settings",title="")
+         i(class="icon icon-cog")
+         span(class='text') Settings
+      li(class="btn btn-inverse")
+        a(href="/logout",title="")
+         i(class="icon icon-share-alt")
+         span(class='text') Logout
+  div#sidebar
+    a.visible-phone(href='#')
+      i.icon.icon-home
+      | Dashboard
+    ul
+      li(id="dash",class="active open")
+        a(href="/home")
+          i(class='icon icon-home')
+          span Dashboard
+      li(id="venu",class='submenu')
+        a(href="#")
+          i(class='icon icon-th-list')
+          span Venues
+        ul
+          each mng in mngData
+            li
+              a(href="/venue_details/#{mng.foursquare_id}") #{mng.name}
+      li(id="apts")
+        a(href="/appointments")
+         i(class='icon icon-th-list')
+         span Appointments
+      li(id="cale")
+        a(href="/calender")
+         i(class="icon icon-inbox")
+         span Calendar 
+      li(id="deals")
+        a(href="/deals")
+         i(class="icon icon-tags")
+         span Deals
+  ul#footer.footer_full
+      li.chat-title.drop2columns.inbox
+        a.chat_uname(href='#') 
+          | <i class = "icon-envelope" style="margin-top: -1px;"></i>Inbox
+        div.msgCount 
+        .footer_dropup.drop2columns(style="background-color:#121212")
+          .inboxCont
+            p
+              blockquote
+                p 
+                  a.openChatBox(href="#",uid="12")
+  block content
+  script
+    var business_id = "#{info._id}";
+    var business_name = "#{info.firstname}";
+  
+

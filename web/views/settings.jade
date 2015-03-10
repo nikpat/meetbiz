@@ -1,0 +1,264 @@
+!!! 5
+html(lang='en')
+  meta(charset='UTF-8')
+  meta(name='viewport',content='width=device-width, initial-scale=1.0')
+  head
+     title walki Dashboard
+     link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+     link(rel='stylesheet', href='/stylesheets/bootstrap-responsive.min.css')
+     link(rel='stylesheet', href='/stylesheets/unicorn.grey.css')
+     link(rel='stylesheet', href='/stylesheets/unicorn.main.css')
+     link(rel='stylesheet', href='/stylesheets/unicorn.login.css')
+     link(rel='stylesheet', href='/stylesheets/fullcalendar.css')
+     link(rel='stylesheet', href='/stylesheets/bootstrap-toggle-buttons.css')
+     block scripts
+  div#header
+    h1(style="margin:0px")
+      a(href='/home',style="margin:0px") walki Admin
+  div#user-nav(class="navbar navbar-inverse")
+    ul(class="nav btn-group", style="width:auto;margin:0px")
+      li(class="btn btn-inverse")
+        a(href="/settings",title="")
+         i(class="icon icon-cog")
+         span(class='text') Settings
+      li(class="btn btn-inverse")
+        a(href="/logout",title="")
+         i(class="icon icon-share-alt")
+         span(class='text') Logout
+  div#sidebar
+    a.visible-phone(href='#')
+      i.icon.icon-home
+      | Home
+    ul(style='display:block',id="sideNav")
+      li 
+        a(href="/home")
+          i(class='icon icon-home')
+          span Home
+      li(class='active open',id="settingsNav") 
+        a(href="javascript:void(0)")
+          i(class='icon icon-th')
+          span Notifications
+      li(id="employeesNav")
+        a(href="javascript:void(0)")
+          i(class='icon icon-th-list')
+          span Employees
+      li(id="serviceNav")
+        a(href="javascript:void(0)")
+         i(class='icon icon-th-list')
+         span Services   
+   div#content
+     div#content-header
+       h1 Settings
+     div(class="container-fluid")
+       div(class='row-fluid')
+        div(class='span12')
+         div(class="container-fluid",id="settings",style="display:block")      
+            div(class='widget-box')
+               div(class='widget-title')
+                   span(class='icon')
+                     i(class='icon-align-justify')
+                   h5 Notifications
+                  div(class='widget-content nopadding')
+                    form(class='form-horizontal',method='get')                 
+                      div(class='control-group',style="width:50%;margin-bottom: 5px;")
+                        div(style="width: 100%;margin:5px;padding:5px;float:left")
+                            |<b>SMS Alert : </b>                          
+                            if(alert_note == 1)
+                              .normal-toggle-button(style="float:right")                             
+                                input(id='alert_bt',type='checkbox', checked='checked')
+                            else
+                              .normal-toggle-button(style="float:right")
+                                input(id='alert_bt',type='checkbox')                            
+                        div(style="width: 100%;margin:5px;padding:5px;float:left")
+                          |<b>Email : </b>                          
+                          if(email_note == 1)
+                            .normal-toggle-button(style="float:right")                             
+                              input(id='email_bt',type='checkbox', checked='checked')
+                          else
+                            .normal-toggle-button(style="float:right")
+                              input(id='email_bt',type='checkbox')
+                        div(style="width: 100%;margin:5px;padding:5px;float:left")
+                          |<b>Push : </b>                          
+                          if(push_note == 1)
+                            .normal-toggle-button(style="float:right")                             
+                              input(id='push_bt',type='checkbox', checked='checked')
+                          else
+                            .normal-toggle-button(style="float:right")
+                              input(id='push_bt',type='checkbox')
+
+         div(class="container-fluid",id="employees",style="display:none")         
+           div.row 
+             button.btn.btn-success(id="addEmpBt") Add
+           div.row(id="manageEmp") 
+             div(class="container span4" ,style="")
+              div(class='widget-box')
+                 div(class='widget-title')
+                     span(class='icon')
+                        i(class='icon-align-justify')
+                     h5 Employees
+                   div(class='widget-content nopadding')
+                    ul.recent-posts(id="empList")                        
+                       each val,key in employees
+                          each v,k in val
+                             each i,j in v
+                                li
+                                  a(href="javascript:void(0)",class="showEmp",id="#{i.id}") #{i.name}
+             div(class="container span8" ,style="padding-left: 5px;")
+              div(class="widget-box")
+                div(class="widget-title")
+                  span(class="icon")
+                    i(class='icon-align-justify')
+                  h5 Details
+                div(class='widget-content nopadding')
+                  div.form-horizontal
+                    input(type='hidden',id="empId",style="display:none")
+                    div.control-group(style="width: 95%")
+                      label.control-label Venue
+                      div.controls
+                        select(id="empVenue")
+                         each val,key in venues
+                           option(value="#{val.foursquare_id}")  #{val.name}                         
+                    div.control-group(style="width: 95%")
+                      label.control-label Name
+                      div.controls
+                        input(type='text',id="empName")
+                    div.control-group(style="width: 95%")
+                      label.control-label Email
+                      div.controls
+                        input(type='text',id="empEmail")
+                    div.control-group(style="width: 95%")
+                      label.control-label Phone
+                      div.controls
+                        input(type='text',id="empPhone")           
+                    div.control-group(style="width: 95%")
+                     div.controls          
+                      button.btn.btn-primary(id="empUpdate") Update
+                      button.btn.btn-danger(id="empDel",style="float:right") Delete 
+           div.row(id="addEmp",style="display:none") 
+             div(style="padding-left: 5px;")
+              div(class="widget-box")
+                div(class="widget-title")
+                  span(class="icon")
+                    i(class='icon-align-justify')
+                  h5 Add Employee
+                div(class='widget-content nopadding')
+                  div.form-horizontal
+                    input(type='hidden',id="empId",style="display:none")
+                    div.control-group(style="width: 95%")
+                      label.control-label Venue
+                      div.controls
+                        select(id="newEmpVenue")
+                         each val,key in venues
+                           option(value="#{val.foursquare_id}")  #{val.name}                         
+                    div.control-group(style="width: 95%")
+                      label.control-label Name
+                      div.controls
+                        input(type='text',id="newEmpName")
+                    div.control-group(style="width: 95%")
+                      label.control-label Email
+                      div.controls
+                        input(type='text',id="newEmpEmail")
+                    div.control-group(style="width: 95%")
+                      label.control-label Phone
+                      div.controls
+                        input(type='text',id="newEmpPhone")           
+                    div.control-group(style="width: 95%")
+                     div.controls          
+                      button.btn.btn-primary(id="addNewEmp") Save
+
+         div(class="container-fluid",id="service",style="display:none")
+           div.row 
+             button.btn.btn-success(id="addServicebt") Add
+           div.row(id="manageService") 
+             div(class="container span4" ,style="")
+              div(class='widget-box')
+                 div(class='widget-title')
+                     span(class='icon')
+                        i(class='icon-align-justify')
+                     h5 Service
+                   div(class='widget-content nopadding')
+                    ul.recent-posts(id="serviceList")                        
+                       each val,key in services
+                          each v,k in val
+                             each i,j in v
+                                li
+                                  a(href="javascript:void(0)",class="showservice",id="#{i.id}") #{i.name}
+             div(class="container span8" ,style="padding-left: 5px;")
+              div(class="widget-box")
+                div(class="widget-title")
+                  span(class="icon")
+                    i(class='icon-align-justify')
+                  h5 Details
+                div(class='widget-content nopadding')
+                  div.form-horizontal
+                    input(type='hidden',id="serviceId",style="display:none")
+                    div.control-group(style="width: 95%")
+                      label.control-label Venue
+                      div.controls
+                        select(id="serviceVenue")
+                         each val,key in venues
+                           option(value="#{val.foursquare_id}")  #{val.name}                         
+                    div.control-group(style="width: 95%")
+                      label.control-label Name
+                      div.controls
+                        input(type='text',id="serviceName")
+                    div.control-group(style="width: 95%")
+                      label.control-label Duration
+                      div.controls
+                        input(type='text',id="serviceDuration")
+                    div.control-group(style="width: 95%")
+                      label.control-label Price
+                      div.controls
+                        input(type='text',id="servicePrice")
+                        span.help-block Price Per Hour
+                    div.control-group(style="width: 95%")
+                     div.controls          
+                      button.btn.btn-primary(id="serviceUpdate") Update
+                      button.btn.btn-danger(id="serviceDel",style="float:right") Delete
+           div.row(id="addService",style="display:none") 
+             div(style="padding-left: 5px;")
+              div(class="widget-box")
+                div(class="widget-title")
+                  span(class="icon")
+                    i(class='icon-align-justify')
+                  h5 Add Service
+                div(class='widget-content nopadding')
+                  div.form-horizontal(action='#',method='get')
+                    div.control-group(style="width: 95%")
+                      label.control-label Venue
+                      div.controls
+                        select(id="newServiceVenue")
+                         each val,key in venues
+                           option(value="#{val.foursquare_id}")  #{val.name}
+                    div.control-group(style="width: 95%")
+                      label.control-label Name
+                      div.controls
+                        input(type='text',id="newServiceName")
+                    div.control-group(style="width: 95%")
+                      label.control-label Duration
+                      div.controls
+                        input(type='text',id="newServiceDuration")
+                    div.control-group(style="width: 95%")
+                      label.control-label Price
+                      div.controls
+                        input(type='text',id="newServicePrice")
+                        span.help-block Price Per Hour
+                    div.control-group(style="width: 95%")
+                     div.controls          
+                      button.btn.btn-primary(id="addNewService") Save
+                      
+  script(type='text/javascript', src='/javascripts/lib/jquery.min.js')
+  script(type='text/javascript', src='/javascripts/lib/jquery.ui.custom.js')
+  script(type='text/javascript', src='/javascripts/lib/bootstrap.min.js')
+  script(type='text/javascript', src='/javascripts/lib/jquery.uniform.js')
+  script(type='text/javascript', src='/javascripts/lib/underscore.js')
+  script(type='text/javascript', src='/javascripts/lib/unicorn.js')
+  script(type='text/javascript', src='/javascripts/lib/unicorn.dashboard.js')
+  script(type='text/javascript', src='/javascripts/lib/jquery.uniform.js')
+  script(type='text/javascript', src='/javascripts/lib/underscore.js')
+  script(type='text/javascript', src='/javascripts/lib/backbone.js')
+  script(type='text/javascript', src='/javascripts/lib/jquery.toggle.buttons.js')
+  script(type='text/javascript', src='/javascripts/settingspage.js')
+  script
+    var business_id = "#{business_id}";
+    $('.normal-toggle-button').toggleButtons();

@@ -1,0 +1,338 @@
+<html>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+
+      
+      var socket = io.connect(window.location.href);
+      /*
+       socket.emit('updateVenueByID', { business_id : "516512a94050c90200000005",venue_id : '50c6962890e77cee361ad824',accesstoken : '5YYKJDKGC0ELXJDRBWMCGIAZS1FHD5WZXENTFTQEESYACSJH'});
+        socket.on('updateVenueByID',function(data){
+        console.log('updateVenueByID===');
+        console.log(data);
+        });
+      */
+      /*
+      socket.emit('getEventsByVenueID', { venue_id : '50ba71a2c84cde0c2ac4d020' });
+        socket.on('getEventsByVenueID',function(data){
+        console.log('getEventsByVenueID===');
+        console.log(data);
+      });
+      */
+      /*
+      socket.emit('verifyFoursquareLogin', { accesstoken : '5YYKJDKGC0ELXJDRBWMCGIAZS1FHD5WZXENTFTQEESYACSJH' });
+      socket.on('verifyFoursquareLogin',function(data){
+       console.log('verifyFoursquareLogin===');
+       console.log(data);
+      });
+      */
+      /*
+        socket.emit('getEventById', { event_id : '5153b79ddf78890200000004' });
+          socket.on('getEventById',function(data){
+          console.log('getEventById===');
+          console.log(data);
+          });
+      */
+      /*
+      socket.emit('updateEventStatus', { foursquare_token:"RTH3W1HFRJPNKG5KRILYFAXOFKDXIOEE5UNORNECFYPIZ3P1",event_id : '514fc691b3a07d0200000004',number:-2,friendly:"Deleted" });
+        socket.on('updateEventStatus',function(data){
+        console.log('getEventById===');
+        console.log(data);
+            });
+      */
+      /*
+      socket.emit('editCustomer', { 
+                id:"515ebd5969df042202000004",
+                venue_id :"50ba71a2c84cde0c2ac4d020",
+                foursquare_token : "5YYKJDKGC0ELXJDRBWMCGIAZS1FHD5WZXENTFTQEESYACSJH",
+                name : "nitin",
+                email : "nitin@gmail.com",
+                mobile : "123123",
+                office : "12323232",
+                home : "32132323",
+                address: "123asd123asd123",
+                city : "asd123asd",
+                state : "aaa",
+                zip: "12323"
+       });
+      socket.on('editCustomer',function(data){
+      console.log('editCustomer===');
+      console.log(data);
+      });
+      */
+      /*
+      socket.emit('delCustomer', { 
+                id : '515e9edd53267a6601000004',
+                foursquare_token : "5YYKJDKGC0ELXJDRBWMCGIAZS1FHD5WZXENTFTQEESYACSJH"
+       });
+      socket.on('delCustomer',function(data){
+      console.log('delCustomer===');
+      console.log(data);
+      }); 
+     */
+     /*
+      socket.emit('addEmployee', { 
+              
+                "venue_id":"50ba71a2c84cde0c2ac4d020",
+                "foursquare_token":"5YYKJDKGC0ELXJDRBWMCGIAZS1FHD5WZXENTFTQEESYACSJH",           
+                'name':"nitinpp",
+                'email':"tet@gmail.com",
+                'phone':"1323",
+       });
+      socket.on('addEmployee',function(data){
+      console.log('addEmployee===');
+      console.log(data);
+      });
+      */
+      /*
+      socket.emit('delEmployee', { 
+                "id" : "5162799d97ed1bc70f000005",
+                "foursquare_token":"5YYKJDKGC0ELXJDRBWMCGIAZS1FHD5WZXENTFTQEESYACSJH"
+       });
+      socket.on('delEmployee',function(data){
+      console.log('delEmployee===');
+      console.log(data);
+      });
+      */
+      /*
+      socket.emit('editEmployee', {
+                "id" : "5162799d97ed1bc70f000005", 
+                
+                "venue_id":"50ba71a2c84cde0c2ac4d020",
+                "foursquare_token":"5YYKJDKGC0ELXJDRBWMCGIAZS1FHD5WZXENTFTQEESYACSJH",           
+                'name':"nitinp",
+                'email':"asdsm@asd.com",
+                'phone':"1323",
+       });
+      socket.on('editEmployee',function(data){
+      console.log('editEmployee===');
+      console.log(data);
+      });
+      */
+      /*
+      socket.emit('getEmployee', { 
+            "business_id":"515e65bd4e2de4de01000008",
+            "venue_id":"50ba71a2c84cde0c2ac4d020",
+            "foursquare_token":"5YYKJDKGC0ELXJDRBWMCGIAZS1FHD5WZXENTFTQEESYACSJH", 
+       });
+      socket.on('getEmployee',function(data){
+      console.log('getEmployee===');
+      console.log(data);
+      });
+      */
+      /*
+      socket.emit('getCustomersByVenueId', { 
+            "venue_id":"50ba71a2c84cde0c2ac4d020"
+       });
+      socket.on('getCustomersByVenueId',function(data){
+      console.log('addEmployee===');
+      console.log(data);
+      });
+      */
+      
+      /*
+      socket.emit('addService', { 
+                "venue_id":"50ba71a2c84cde0c2ac4d020",
+                "foursquare_token":"5YYKJDKGC0ELXJDRBWMCGIAZS1FHD5WZXENTFTQEESYACSJH",           
+                'name':"haircut asd",
+                'duration':"2hr",
+                'price':"132$",
+       });
+      socket.on('addService',function(data){
+      console.log('addService===');
+      console.log(data);
+      });
+      */
+      /*
+      socket.emit('editService', { 
+                "venue_id":"50ba71a2c84cde0c2ac4d020",
+                "foursquare_token":"5YYKJDKGC0ELXJDRBWMCGIAZS1FHD5WZXENTFTQEESYACSJH",           
+                'name':"hair dess",
+                'duration':"2hr",
+                'price':"323233$",
+                'id':"51627afe2307e3d40f000005"
+       });
+      socket.on('editService',function(data){
+      console.log('editService===');
+      console.log(data);
+      });
+      */
+      /*
+      socket.emit('delService', { 
+                "foursquare_token":"5YYKJDKGC0ELXJDRBWMCGIAZS1FHD5WZXENTFTQEESYACSJH",          
+                'id':"51627afe2307e3d40f000005"
+       });
+      socket.on('delService',function(data){
+      console.log('delService===');
+      console.log(data);
+      });
+      */
+      /*
+      socket.emit('getServices', {
+        "venue_id":"50ba71a2c84cde0c2ac4d020",
+        "foursquare_token":"5YYKJDKGC0ELXJDRBWMCGIAZS1FHD5WZXENTFTQEESYACSJH", 
+       });
+      socket.on('getServices',function(data){
+      console.log('getServices===');
+      console.log(data);
+      });*/
+      /*
+      socket.emit('addEvent', {
+        "venue_id":"50ba71a2c84cde0c2ac4d020",
+        "token":"5YYKJDKGC0ELXJDRBWMCGIAZS1FHD5WZXENTFTQEESYACSJH",
+        "duration": {"number":60,"friendly":"1 hr"},
+        "name": "nick Dental",
+        "date": {"month":"05","time":"1400","year":"2013","day":"02"},
+        "location":{"city":"Dallas","state":"TX"},
+        "start_time":"2:00pm","end_time":"3:00pm",
+        "status":{"number":0,"friendly":"Pending"}});
+        socket.on('addEvent',function(data){
+        console.log('addEvent===');
+        console.log(data);
+      });
+      */
+      /*
+        {"duration":{"number":60,"friendly":"1 hr"},"venue_id":"4ca208e219e4236aeaff6e89","name":"Bella Dental","token":"BAAGDboDP4rwBAFeoZBcf4ZAo68sG9axaNF8CT2ZCAbLk0MBZABJueYZC6H6i3WlXCMjME6Mvu8UhL0O6HLtIZC4sJKEcOcen1o0ZBwjUgNik5hpWdPTiopIw4m0C0mpHEEZD","date":{"month":"05","time":"1400","year":"2013","day":"02"},"location":{"city":"Dallas","state":"TX"},"start_time":"2:00pm","end_time":"3:00pm","status":{"number":0,"friendly":"Pending"}}
+      */
+      /*
+      socket.emit('getHoursByDay', 
+        { accesstoken : '5YYKJDKGC0ELXJDRBWMCGIAZS1FHD5WZXENTFTQEESYACSJH',
+          venue_id : '50ba71a2c84cde0c2ac4d020',
+          month:4,
+          day:12,
+          year:2013
+           });
+        socket.on('getHoursByDay',function(data){
+        console.log('getHoursByDay===');
+        console.log(data);
+      });*/
+      /*
+      socket.emit('storeInvitation',
+        { 
+                //id:"515ebd5969df042202000004",
+                venue_id :"50ba71a2c84cde0c2ac4d020",
+                foursquare_token : "5YYKJDKGC0ELXJDRBWMCGIAZS1FHD5WZXENTFTQEESYACSJH",
+                name : "nitin",
+                email : "nitin@gmail.com",
+                mobile : "123123",
+                office : "12323232",
+                home : "32132323",
+                address: "123asd123asd123",
+                city : "asd123asd",
+                state : "aaa",
+                zip: "12323"
+           });
+        socket.on('storeInvitation',function(data){
+        console.log('storeInvitation===');
+        console.log(data);
+      });*/
+      /*
+      socket.emit('sendNotifications',
+        { 
+          ua_token:"ea84fd7a146609a67d6320a3c551002e139653a46e7d6ead1c840158f8de3ff0",
+          msg: "You won $50000000 !!!",
+         });
+        socket.on('sendNotifications',function(data){
+        console.log('sendNotifications===');
+        console.log(data);
+      }); */
+
+</script>
+
+Event Dignostics  => <br>
+Event Name :<br>
+<input id="eventName" style="width:500"/><br>
+Args[ eg: { "venue_id" : "50ba71a2c84cde0c2ac4d020" , "user_id":"asdsad1231233123"} ] : <br>
+<input id="params" style="width:1000"/><br>
+<button id="send">Send</button>
+<div id="res"></div>
+
+
+========================================================================================
+
+  <div id="login">
+    Connect :
+    <input type="text" id="username" placeholder="name">
+    <input type="text" id="uid" placeholder="Uid">
+    <input type="text" id="type" placeholder="type">
+    <input type="submit" id="connect" value="connect">
+  </div>
+  <div id="msgBox" style="display:none">
+    Send msg to: 
+    <input type="text" id="to_uid" placeholder="to_uid">
+    <input type="text" id="msg" placeholder="msg">
+    <input type="text" id="venue_id" placeholder="venue_id">
+    <input type="submit" id="sendchat" value="send">
+    <input type="submit" id="disconnect" value="disconnect">
+    <div id="usrMsgs">
+
+    </div>
+  </div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+
+
+<script>
+
+  var thisUser = null;
+  socket.on('ack', function (data) {
+    console.log(data);
+  });
+  $("#connect").on("click",function(){
+      $("#login").hide();
+      $("#msgBox").show();
+        var type = $("#type").val();
+      var uid = $("#uid").val();
+      var uname = $("#username").val();
+      
+      var user = {
+              type : type,
+              uid : uid,
+              uname :uname,
+              type : type
+            }
+
+    thisUser = user;
+    socket.emit('connectChat',user);
+    socket.on('connectChat',function(data){
+      console.log(data);
+    });
+
+  });
+
+  $("#sendchat").on("click",function(){
+        console.log(thisUser);
+      socket.emit("sendChat",{to_uid:$("#to_uid").val(),msg:$("#msg").val(),from_uid:thisUser.uid,type:thisUser.type,venue_id:$("#venue_id").val()});
+      socket.on("sendChat",function(data){
+        console.log(data);
+      });
+      socket.on("msg",function(data){
+        console.log(data);
+      });
+  });
+</script>
+
+<script>
+
+$("#send").on("click",function(e){
+  var evetName = $("#eventName").val();//eg: getEventsByVenueID
+  var param = $.parseJSON($("#params").val());//example { "venue_id" : '50ba71a2c84cde0c2ac4d020' }
+  //console.log(typeof(param));
+  console.log("====--->"+param);
+  if(evetName.length>0){
+        console.log(param);
+        socket.emit(evetName,param);
+        socket.on(evetName,function(data){
+        $("#res").html(data);
+        console.log(data);
+      });
+  }
+  else{
+    alert("Plz add eventname and parms");
+  }
+});
+
+</script>
+</html>

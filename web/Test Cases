@@ -1,0 +1,53 @@
+Test Cases
+==========
+
+Critical :-
+
+1)In-App purchase
+
+Test case id			: 1.1
+Unit to Test 			: In app purchase should make account PREMIUM ?
+Assumptions 			: Test to be performed in sandbox.
+Test data				: [ @akshay paste your request here ]
+Steps to be executed	: 1 => Login 
+						  2 => visit to chat option and tap chat. 
+
+Expected result			: 1 => tap on chat should ask user for purchase.
+						  2 => On purchase the account should show premium status on notification settings.
+						  3 => User should be able to add deal
+Actual result			: [ @akshay ]
+Pass/Fail				: [ @akshay ]
+Comments				: [ @akshay ]
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Test case id			: 1.2
+Unit to Test 			: In app purchase should make account PREMIUM ?
+Assumptions 			: if purchase made in the above case then this test should allow user to add deal.
+Test data				: [ @akshay paste your request here ]
+Steps to be executed	: 1 => Login
+						  2 => visit to add Deal. 
+
+Expected result			: 1 => tap on add should ask user for purchase or allow user to add deal if its already purchased
+						  2 => On purchase the account should show premium status on notification settings.
+						  3 => User should be able to chat
+Actual result			: [ @akshay ]
+Pass/Fail				: [ @akshay ]
+Comments				: [ @akshay ]
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+Test case id			: 1.3
+Unit to Test 			: Auto renewal of subscription
+Assumptions 			: If subscription expires then account should show "free" status in settings or it should say 								  "premium" in case of auto renewal. 
+Test data				: [ @akshay paste your request here ]
+Steps to be executed	: 1 => Login 
+						  2 => add Deal. 
+						  3 => chat.
+Expected result			: add deal enabled and chat enabled
+Actual result			: [ @akshay ]
+Pass/Fail				: [ @akshay ]
+Comments				: [ @akshay ]
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

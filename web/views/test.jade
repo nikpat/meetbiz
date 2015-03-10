@@ -1,0 +1,11 @@
+script(src='/socket.io/socket.io.js')
+script
+      var socket = io.connect('http://10.0.11.92:8080');
+      socket.on('news', function (data) {
+      console.log(data);
+      socket.emit('getEventsByVenueID', { venue_id : '50ba71a2c84cde0c2ac4d020' });
+      });
+
+      socket.on('getEventsByVenueID',function(data){
+      console.log(data);
+      });

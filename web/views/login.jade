@@ -1,0 +1,50 @@
+extends loginlayout
+
+block content
+  div#logo
+    img(src='/img/logo.png')
+  div#loginbox
+    form#loginform(method="post",action="/login",class='form-vertical')
+      -if(flashmsg)
+        span
+          | #{flashmsg}
+      p(style="margin-top:0px !important") Enter username and password to continue.
+      div(class='control-group')
+        div(class='controls')
+          div(class='input-prepend')
+            span(class='add-on')
+              i(class='icon-user')
+            input(type='text',name="username",placeholder='Username')
+       div(class='control-group')
+        div(class='controls')
+          div(class='input-prepend')
+            span(class='add-on')
+              i(class='icon-lock')
+            input(type='password',name="password",placeholder='Password')
+       div(class="form-actions")
+         div
+           span(class='pull-left')
+             a#to-recover(href="#",class='flip-link') Lost password?
+           span(class='pull-right')
+             input(type='submit', class='btn btn-inverse', value='Login',style="margin-right: 10px;")
+             a(href="/checkfoursquare")
+                img(src='/img/fsconnect.png')
+           span(class='pull-left')
+             a#to-signup(href="/signup",class='flip-link') Signup! 
+    form#recoverform(method="post",action="/forgotpass", class="form-vertical")
+      p Enter your e-mail address below and we will send you instructions how to recover a password.
+      div(class='controls')
+          div(class='input-prepend')
+            span(class='add-on')
+             i(class='icon-envelope')
+            input(type='email',required="required",name='uemail',placeholder='Email address')
+      div(class="form-actions")
+         span(class='pull-left')
+           a.to-login(href="#",class='flip-link') &lt; Back to login
+         span(class='pull-right')
+           input(type='submit', class='btn btn-inverse', value='Recover')
+
+
+block scripts
+  script(type='text/javascript',src='/javascripts/lib/jquery.min.js')
+  script(type='text/javascript',src='/javascripts/lib/unicorn.login.js')

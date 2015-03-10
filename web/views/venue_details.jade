@@ -1,0 +1,61 @@
+extends layout
+
+block content
+   div#content
+     div#content-header
+       h1 Venues
+       div(class="btn-group")
+         a(class="btn btn-large tip-bottom", data-original-title="Manage Users")
+          i(class='icon-user')
+         a(class="btn btn-large tip-bottom", data-original-title="Manage Orders")
+          i(class="icon-shopping-cart")
+     div#breadcrumb
+       a(class='tip-bottom', data-original-title='Go Home')
+         i(class='icon-home')Home Home
+       a(class='current', data-original-title='Go Home') Venues
+     div(class="container-fluid")
+       div(class='row-fluid')
+         div(class='span12', style='width:65%')
+           div(class='widget-box')
+             div(class='widget-title')
+               span(class='icon')
+                 i(class='icon-align-justify')
+               h5 #{vdata.name}
+              div(class='widget-content nopadding')
+                form(class='form-horizontal',method='get')
+                  div(class='control-group')
+                    img(src=info.photo)
+                  div(class='control-group')
+                    p 
+                      |<b>Name</b>
+                      |<span>#{vdata.name}</span>
+                    p
+                      |<b>Contact</b>
+                      |   <span>#{vdata.contact.email}</span>
+                    p
+                      |<b>URL</b>
+                      |<span><a target="_blank" href="#{vdata.canonicalUrl}">FourSquare Link</a></span>
+                    p
+                      |<b>Phone</b>
+                      |<span>#{vdata.contact.phone}</span>
+          div(class='span12',style='width:32%')
+            div(class='widget-box')
+              div(class='widget-title')
+                span(class='icon')
+                  i(class='icon-align-justify')
+                h5 Store Hours
+              div(class='widget-content nopadding')
+                form(class='form-horizontal')
+                  div(class='control-right')
+                    each day in vdata.hours.timeframes
+                      div#key #{day.days}
+                        each time in day.open
+                          <span id='objval'>#{time.renderedTime}</span>
+
+block scripts
+  script(type='text/javascript', src='/javascripts/lib/jquery.min.js')
+  script(type='text/javascript', src='/javascripts/lib/jquery.ui.custom.js')
+  script(type='text/javascript', src='/javascripts/lib/bootstrap.min.js')
+  script(type='text/javascript', src='/javascripts/lib/jquery.uniform.js')
+  script(type='text/javascript', src='/javascripts/lib/underscore.js')
+  script(type='text/javascript', src='/javascripts/lib/backbone.js')

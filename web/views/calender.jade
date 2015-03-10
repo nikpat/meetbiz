@@ -1,0 +1,70 @@
+extends layout
+
+block content
+    #content
+          #content-header
+            h1 Calendar
+            .btn-group
+              a.btn.btn-large.tip-bottom(title='Manage Files')
+                i.icon-file
+              a.btn.btn-large.tip-bottom(title='Manage Users')
+                i.icon-user
+              a.btn.btn-large.tip-bottom(title='Manage Comments')
+                i.icon-comment
+                span.label.label-important 5
+              a.btn.btn-large.tip-bottom(title='Manage Orders')
+                i.icon-shopping-cart
+          #breadcrumb
+            a.tip-bottom(href='#', title='Go to Home')
+              i.icon-home
+              | Home
+            a(href='#') Sample pages
+            a.current(href='#') Calendar
+          .container-fluid
+            .row-fluid
+              .span12
+                .alert.alert-info
+                  | This page demonstrates a jQuery calendar plugin. Try to add a new event!
+                  a.close(href='#', data-dismiss='alert') ×
+                .widget-box.widget-calendar
+                  .widget-title
+                    span.icon
+                      i.icon-calendar
+                    h5 Calendar
+                    .buttons
+                      a#add-event.btn.btn-success.btn-mini(data-toggle='modal', href='#modal-add-event')
+                        i.icon-plus.icon-white
+                        | Add new event
+                      #modal-add-event.modal.hide
+                        .modal-header
+                          button.close(type='button', data-dismiss='modal') ×
+                          h3 Add a new event
+                        .modal-body
+                          p Enter event name:
+                          p
+                            input#event-name(type='text')
+                        .modal-footer
+                          a.btn(href='#', data-dismiss='modal') Cancel
+                          a#add-event-submit.btn.btn-primary(href='#') Add event
+                  .widget-content.nopadding
+                    .panel-left
+                      #fullcalendar
+                    #external-events.panel-right
+                      .panel-title
+                        h5 Events
+                      .panel-content
+                        .external-event.ui-draggable.label.label-inverse My Event 1
+                        .external-event.ui-draggable.label.label-inverse My Event 2
+                        .external-event.ui-draggable.label.label-inverse My Event 3
+                        .external-event.ui-draggable.label.label-inverse My Event 4
+                        .external-event.ui-draggable.label.label-inverse My Event 5
+block scripts
+  script(type='text/javascript', src='/javascripts/lib/jquery.min.js')
+  script(type='text/javascript', src='/javascripts/lib/jquery.ui.custom.js')
+  script(type='text/javascript', src='/javascripts/lib/bootstrap.min.js')
+  script(type='text/javascript', src='/javascripts/lib/jquery.uniform.js')
+  script(src='/javascripts/lib/fullcalendar.min.js')
+  script(src='/javascripts/lib/unicorn.js')
+  script(src='/javascripts/lib/unicorn.calendar.js')
+  script(type='text/javascript', src='/javascripts/lib/underscore.js')
+  script(type='text/javascript', src='/javascripts/lib/backbone.js')

@@ -1,0 +1,116 @@
+extends layout
+
+block content
+  div#header
+    h1
+      a(href='#') walki Admin
+  div#user-nav(class="navbar navbar-inverse")
+    ul(class="nav btn-group", style="width:auto;margin:0px")
+      li#menu-messages(class="btn btn-inverse dropdown")
+        a(class="dropdown-toggle", data-target="#menu-messages", data-toggle="dropdown", href="#")
+          i(class="icon icon-envelope")
+          span(class='text') Messages
+          span(class="label label-important") 5
+          b(class="caret")
+        ul(class="dropdown-menu")
+         li
+           a(class='sAdd',href='#', title='') new message 
+         li
+           a(class='sInbox',href='#', title='') inbox
+         li
+           a(class='sOutbox',href='#', title='') outbox
+         li
+           a(class='sTrash',href='#', title='') trash
+      li(class="btn btn-inverse")
+        a(href="#",title="")
+         i(class="icon icon-cog")
+         span(class='text') Settings
+      li(class="btn btn-inverse")
+        a(href="/logout",title="")
+         i(class="icon icon-share-alt")
+         span(class='text') Logout
+  div#sidebar
+    ul(style='display:block')
+      li 
+        a(href="#")
+          i(class='icon icon-home')
+          span Dashboard
+      li(class='submenu active open')
+        a(href="#")
+          i(class='icon icon-th-list')
+          span Venues
+      li
+        a(href="#")
+         i(class='icon icon-th-list')
+         span Appointments
+      li
+        a(href="#")
+         i(class="icon icon-inbox")
+         span Calendar
+   div#content
+     div#content-header
+       h1 Venues
+       div(class="btn-group")
+         a(class="btn btn-large tip-bottom", data-original-title="Manage Users")
+          i(class='icon-user')
+         a(class="btn btn-large tip-bottom", data-original-title="Manage Orders")
+          i(class="icon-shopping-cart")
+     div#breadcrumb
+       a(class='tip-bottom', data-original-title='Go Home')
+         i(class='icon-home')Home Home
+       a(class='current', data-original-title='Go Home') Venues
+     div(class="container-fluid")
+       div(class='row-fluid')
+         div(class='span12', style='width:65%')
+           div(class='widget-box')
+             div(class='widget-title')
+               span(class='icon')
+                 i(class='icon-align-justify')
+               h5 Business Information
+              div(class='widget-content nopadding')
+                form(class='form-horizontal',method='get')
+                  div(class='control-group')
+                    img(src=info.photo)
+                  div(class='control-group')
+                    p 
+                      |<b>Owner</b>
+                      |<span>#{info.name}</span>
+                    p
+                      |<b>E-mail</b>
+                      |   <span>#{info.email}</span>
+                    p
+                      |<b>URL</b>
+                      |<span></span>
+                    p
+                      |<b>Phone</b>
+                      |<span></span>
+                    p
+                      |<b>Twitter</b>
+                      |<span></span>
+          div(class='span12',style='width:32%')
+            div(class='widget-box')
+              div(class='widget-title')
+                span(class='icon')
+                  i(class='icon-align-justify')
+                h5 Store Hours
+              div(class='widget-content nopadding')
+                form(class='form-horizontal')
+                  div(class='control-right')
+                    each val, key in days
+                      div#key #{key} <span id='objval'>#{val}</span>
+          div(class='span12', style='margin:0px;width:65%')
+            div(class='widget-box')
+              div(class='widget-title')
+                span(class='icon')
+                  i(class='icon-align-justify')
+                h5 Photos
+              form(class='form-horizontal')
+                div(class='control-right')
+
+block scripts
+  script(type='text/javascript', src='/javascripts/lib/jquery.min.js')
+  script(type='text/javascript', src='/javascripts/lib/jquery.ui.custom.js')
+  script(type='text/javascript', src='/javascripts/lib/bootstrap.min.js')
+  script(type='text/javascript', src='/javascripts/lib/jquery.uniform.js')
+  script(type='text/javascript', src='/javascripts/lib/underscore.js')
+  script(type='text/javascript', src='/javascripts/lib/backbone.js')
